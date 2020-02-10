@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <form id="Calculator">
+        <label>Calculator</label>
+        <input type="number" name="firstVariable">
+        <select name="operator">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input type="number" name="secondVariable">
+        <input type="button" value="=" onclick="Calculate(document.getElementById('Calculator'))">
+        <input type="number" name="answer" value="0">
+    </form>
+</body>
+</html>
