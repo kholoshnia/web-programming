@@ -54,11 +54,8 @@ $(() => {
   /** Sets graph x and y values in accordance with mouse position. */
   $graphSvg.mousemove((event) => {
     const offset = $graphSvg.offset();
-    graph.setRawXValue(
-        (event.pageX - offset.left + $(window).scrollLeft()) * SCALE_X,
-        $xCheckbox);
-    graph.setRawYValue(
-        (event.pageY - offset.top + $(window).scrollTop()) * SCALE_Y);
+    graph.setRawXValue((event.pageX - offset.left) * SCALE_X, $xCheckbox);
+    graph.setRawYValue((event.pageY - offset.top) * SCALE_Y);
   });
 
   /** Saves raw values on graph click. */
