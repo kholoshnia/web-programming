@@ -1,0 +1,28 @@
+/*! Main styles file. */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import 'base/reset';
+@import 'base/utilities';
+
+@import 'layout/grid';
+@import 'layout/header';
+
+@import 'plates/graph';
+@import 'plates/input';
+@import 'plates/results';
+
+@import 'components/buttons';
+@import 'components/checkboxes';
+@import 'components/radios';
+@import 'components/texts';
+
+@import 'base/adaptivity';
+
+body {
+  @include main-font;
+  background-color: $background-color;
+}

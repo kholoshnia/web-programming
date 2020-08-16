@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta content="width=device-width, maximum-scale=1" name="viewport"/>
+  <title>Lab 1</title>
+  <!-- generics -->
+  <link href="img/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link href="img/favicon/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+  <link href="img/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+
+  <!-- Android -->
+  <link href="img/favicon/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+
+  <!-- iOS -->
+  <link href="img/favicon/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+  <link href="img/favicon/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="img/favicon/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+</head>
+<body>
+<header class="convex-plate" id="header">
+  <p>Kholoshnia Vadim Dmitrievich P3213</p>
+  <a class="clean-link" href="https://github.com/kholoshnia/web-programming" target="_blank">
+    <p>Variant №2422</p>
+    <img alt="github" src="img/github.svg" width="32">
+  </a>
+</header>
+
+<main>
+  <table id="main-grid">
+    <tr>
+      <td class="convex-plate no-selection" id="graph-plate" xmlns="http://www.w3.org/2000/svg">
+        <svg id="graph-svg" viewBox="0 0 300 300">
+          <!-- circle -->
+          <path class="graph-shape" d="M 50 150 A 100 100, 0, 0, 1, 150 50 L 150 150 Z"/>
+
+          <!-- triangle -->
+          <polygon class="graph-shape" points="150,200 150,150 200,150"/>
+
+          <!-- rectangle -->
+          <polygon class="graph-shape" points="50,200 50,150 150,150 150,200"/>
+
+          <!-- axles -->
+          <text class="graph-axle-text" x="290" y="140">x</text>
+          <line class="graph-axle-line" x1="0" x2="295" y1="150" y2="150"/>
+          <polygon class="graph-axle-arrow" points="299,150 290,155 290,145"/>
+
+          <text class="graph-axle-text" x="160" y="10">y</text>
+          <line class="graph-axle-line" x1="150" x2="150" y1="5" y2="300"/>
+          <polygon class="graph-axle-arrow" points="150,1 145,10 155,10"/>
+
+          <!-- points -->
+          <line class="graph-point" x1="50" x2="50" y1="145" y2="155"/>
+          <line class="graph-point" x1="100" x2="100" y1="145" y2="155"/>
+          <line class="graph-point" x1="200" x2="200" y1="145" y2="155"/>
+          <line class="graph-point" x1="250" x2="250" y1="145" y2="155"/>
+
+          <line class="graph-point" x1="145" x2="155" y1="250" y2="250"/>
+          <line class="graph-point" x1="145" x2="155" y1="200" y2="200"/>
+          <line class="graph-point" x1="145" x2="155" y1="100" y2="100"/>
+          <line class="graph-point" x1="145" x2="155" y1="50" y2="50"/>
+
+          <!-- labels -->
+          <text class="graph-label r-whole-neg" text-anchor="middle" x="50" y="140">-R</text>
+          <text class="graph-label r-half-neg" text-anchor="middle" x="100" y="140">-R/2</text>
+          <text class="graph-label r-half-pos" text-anchor="middle" x="200" y="140">R/2</text>
+          <text class="graph-label r-whole-pos" text-anchor="middle" x="250" y="140">R</text>
+
+          <text class="graph-label r-whole-neg" text-anchor="start" x="160" y="255">-R</text>
+          <text class="graph-label r-half-neg" text-anchor="start" x="160" y="205">-R/2</text>
+          <text class="graph-label r-half-pos" text-anchor="start" x="160" y="105">R/2</text>
+          <text class="graph-label r-whole-pos" text-anchor="start" x="160" y="55">R</text>
+        </svg>
+      </td>
+
+      <td class="convex-plate" id="results-plate" rowspan="2">
+        <p class="absolute-center no-selection">There is no data yet!</p>
+        <table>
+          <thead>
+          <tr>
+            <th>X value</th>
+            <th>Y value</th>
+            <th>R value</th>
+            <th>Area hit</th>
+            <th>Current time</th>
+            <th>Execution time</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="convex-plate no-selection" id="input-plate">
+        <form>
+          <table id="input-grid">
+            <tr>
+              <td id="x-input">
+                <p>X:</p>
+
+                <input class="convex-checkbox" id="checkbox-x-1" name="x-value" type="checkbox" value="-5">
+                <label for="checkbox-x-1">-5</label>
+
+                <input class="convex-checkbox" id="checkbox-x-2" name="x-value" type="checkbox" value="-4">
+                <label for="checkbox-x-2">-4</label>
+
+                <input class="convex-checkbox" id="checkbox-x-3" name="x-value" type="checkbox" value="-3">
+                <label for="checkbox-x-3">-3</label>
+
+                <input class="convex-checkbox" id="checkbox-x-4" name="x-value" type="checkbox" value="-2">
+                <label for="checkbox-x-4">-2</label>
+
+                <input class="convex-checkbox" id="checkbox-x-5" name="x-value" type="checkbox" value="-1">
+                <label for="checkbox-x-5">-1</label>
+
+                <input class="convex-checkbox" id="checkbox-x-6" name="x-value" type="checkbox" value="0">
+                <label for="checkbox-x-6">0</label>
+
+                <input class="convex-checkbox" id="checkbox-x-7" name="x-value" type="checkbox" value="1">
+                <label for="checkbox-x-7">1</label>
+
+                <input class="convex-checkbox" id="checkbox-x-8" name="x-value" type="checkbox" value="2">
+                <label for="checkbox-x-8">2</label>
+
+                <input class="convex-checkbox" id="checkbox-x-9" name="x-value" type="checkbox" value="3">
+                <label for="checkbox-x-9">3</label>
+              </td>
+            </tr>
+
+            <tr>
+              <td id="y-input">
+                <label for="text-y-1">Y:</label>
+                <input autocomplete="off" class="concave-text" id="text-y-1" name="y-value" placeholder="Enter value"
+                       type="text">
+              </td>
+            </tr>
+
+            <tr>
+              <td id="r-input">
+                <p>R:</p>
+
+                <input class="convex-radio" id="radio-r-1" name="r-value" type="radio" value="1">
+                <label for="radio-r-1">1</label>
+
+                <input class="convex-radio" id="radio-r-2" name="r-value" type="radio" value="1.5">
+                <label for="radio-r-2">1.5</label>
+
+                <input class="convex-radio" id="radio-r-3" name="r-value" type="radio" value="2">
+                <label for="radio-r-3">2</label>
+
+                <input class="convex-radio" id="radio-r-4" name="r-value" type="radio" value="2.5">
+                <label for="radio-r-4">2.5</label>
+
+                <input class="convex-radio" id="radio-r-5" name="r-value" type="radio" value="3">
+                <label for="radio-r-5">3</label>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <input class="convex-button" id="submit-button" type="submit" value="Submit">
+                <input class="convex-button" id="clear-form-button" type="button" value="Clear form">
+                <input class="convex-button" id="clear-table-button" type="button" value="Clear table">
+              </td>
+            </tr>
+          </table>
+        </form>
+      </td>
+    </tr>
+  </table>
+</main>
+</body>
+</html>

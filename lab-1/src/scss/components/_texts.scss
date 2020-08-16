@@ -1,0 +1,25 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+.concave-text {
+  @include main-font;
+  @include concave(2px, 5px);
+
+  font-size: 14px;
+  width: 100%;
+  padding: 10px;
+  transition: $normal-transition;
+  border: 0;
+  border-radius: 50px;
+  outline: 0;
+  background-color: $background-color;
+
+  &:invalid,
+  &:required {
+    @include concave(2px, 5px, true);
+  }
+
+  &:focus {
+    @include concave(1px);
+  }
+}

@@ -1,0 +1,28 @@
+@import '../abstracts/mixins';
+
+#input-plate {
+  @include align-center;
+  padding: 1em;
+
+  input:not([type='button']) {
+    margin-left: 10px;
+  }
+}
+
+#x-input,
+#y-input,
+#r-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  p:first-child {
+    z-index: 1;
+  }
+}
+
+#clear-form-button {
+  margin-right: 5px;
+  margin-left: 5px;
+}
