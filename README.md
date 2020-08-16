@@ -10,4 +10,4 @@ Technologies used:
 - jQuery
 - SuperAgent
 
-Result: se.ifmo.ru/~s250947/web-programming/lab-1
+Result: https://se.ifmo.ru/~s250947/web-programming/lab-1/
