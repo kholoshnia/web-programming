@@ -8,6 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssoWebpackPlugin = require('csso-webpack-plugin').default;
 
 module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+
   const config = {
     entry: path.resolve(__dirname, 'src', 'js', 'index.js'),
     output: {
@@ -16,7 +18,9 @@ module.exports = (env, argv) => {
       chunkFilename: path.join('js', 'vendors.min.js'),
     },
     optimization: {
-      splitChunks: {chunks: 'all'},
+      splitChunks: {
+        chunks: 'all',
+      },
     },
     devServer: {
       contentBase: path.resolve(__dirname, 'src'),
@@ -27,7 +31,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src', 'index.html'),
         filename: 'index.html',
-        minify: argv.mode === 'production',
+        minify: isProduction,
       }),
       new webpack.ProvidePlugin({
         $: 'jquery',
@@ -73,13 +77,10 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(sa|sc|c)ss$/,
-          include: [
-            path.resolve(__dirname, 'src', 'css'),
-            path.resolve(__dirname, 'src', 'scss'),
-          ],
+          include: path.resolve(__dirname, 'src', 'scss'),
           exclude: /node_modules/,
           use: [
-            argv.mode === 'production'
+            isProduction
                 ? MiniCssExtractPlugin.loader
                 : 'style-loader',
             'css-loader',
@@ -90,18 +91,18 @@ module.exports = (env, argv) => {
     },
   };
 
-  if (argv.mode === 'development') {
+  if (!isProduction) {
     config.devtool = 'source-map';
   }
 
-  if (argv.mode === 'production') {
-    config.plugins.push(...[
-      new MiniCssExtractPlugin({
-        filename: path.join('css', 'style.min.css'),
-        chunkFilename: path.join('css', 'vendors.min.css'),
-      }),
-      new CssoWebpackPlugin(),
-    ]);
+  if (isProduction) {
+    config.plugins.push(
+        new MiniCssExtractPlugin({
+          filename: path.join('css', 'style.min.css'),
+          chunkFilename: path.join('css', 'vendors.min.css'),
+        }),
+        new CssoWebpackPlugin(),
+    );
   }
 
   return config;
