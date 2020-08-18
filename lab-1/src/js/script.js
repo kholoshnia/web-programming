@@ -117,8 +117,8 @@ $(() => {
           'r-value': rValue,
         }).
         accept('text/html').
-        then((response) => results.setTable(response.text),
-            (error) => results.showError(error));
+        then((response) => results.setTable(response.text)).
+        catch((error) => results.showError(error));
   });
 
   /**
@@ -143,8 +143,8 @@ $(() => {
         }).
         query('clear').
         accept('text/html').
-        then((response) => results.setTable(response.text),
-            (error) => results.showError(error));
+        then((response) => results.setTable(response.text)).
+        catch((error) => results.showError(error));
   });
 
   loadForm({$xCheckbox, $yText, $rRadio, results});
