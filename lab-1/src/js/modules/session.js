@@ -79,7 +79,7 @@ const loadRValue = ($rRadio, rValue) => {
  * @param $rRadio jQuery r radio buttons
  * @param results results table object
  */
-export const loadForm = ({$xCheckbox, $yText, $rRadio, results}) => {
+export const loadSession = ({$xCheckbox, $yText, $rRadio, results}) => {
   const rValue = sessionStorage.getItem(R_VALUE_KEY);
   const xValues = sessionStorage.getItem(X_VALUES_KEY);
   const yValue = sessionStorage.getItem(Y_VALUE_KEY);

@@ -4,7 +4,7 @@ import Results from './modules/results';
 import matcher from './plugins/matcher.jquery';
 import validity from './plugins/validity.jquery';
 import {validateValues, validator} from './modules/validator';
-import {loadForm, storeSession} from './modules/session';
+import {loadSession, storeSession} from './modules/session';
 
 $.fn.matcher = matcher;
 $.fn.validity = validity;
@@ -147,7 +147,7 @@ $(() => {
         catch((error) => results.showError(error));
   });
 
-  loadForm({$xCheckbox, $yText, $rRadio, results});
+  loadSession({$xCheckbox, $yText, $rRadio, results});
 
   $(window).bind('beforeunload',
       () => storeSession({
