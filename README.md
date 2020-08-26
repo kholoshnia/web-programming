@@ -11,3 +11,10 @@ Technologies used:
 - SuperAgent
 
 Result: https://se.ifmo.ru/~s250947/web-programming/lab-1/
+
+## Lab 2
+
+Task: Develop a servlet and JSP-based web application that determines whether a point on a coordinate plane falls within a given area.
+
+Technologies used:
+- JSP
