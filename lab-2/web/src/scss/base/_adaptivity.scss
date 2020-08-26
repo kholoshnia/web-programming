@@ -1,0 +1,44 @@
+@media screen and (max-width: 500px) {
+  #header {
+    width: 28em;
+    margin-left: 1em;
+  }
+
+  #results-plate {
+    display: block;
+    margin-top: 2em;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #header {
+    width: 90%;
+  }
+
+  #results-plate {
+    display: block;
+    margin-top: 2em;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #header {
+    width: 34em;
+  }
+}
+
+@media screen and (min-width: 865px) {
+  #header {
+    width: 95%;
+  }
+
+  #results-plate {
+    display: table-cell;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  #header {
+    width: 64em;
+  }
+}

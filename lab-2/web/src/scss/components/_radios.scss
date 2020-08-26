@@ -1,0 +1,33 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+.convex-radio {
+  width: 0;
+  opacity: 0;
+
+  + label {
+    @include main-font;
+    @include align-center;
+    @include convex(5px, 20px);
+
+    width: 100%;
+    height: 32px;
+    cursor: pointer;
+    transition: $normal-transition;
+    border-radius: 16px;
+  }
+
+  &:hover + label,
+  &:focus + label {
+    @include convex(1px, 5px);
+  }
+
+  &:invalid + label,
+  &:required + label {
+    @include convex(5px, 20px, true);
+  }
+
+  &:checked + label {
+    @include concave(1px);
+  }
+}

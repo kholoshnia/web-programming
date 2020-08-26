@@ -1,0 +1,36 @@
+@import '../abstracts/mixins';
+
+#header {
+  @include main-font;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 64em;
+  margin-top: 1em;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0.5em;
+
+  > p {
+    margin-left: 0.5em;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+
+    p {
+      z-index: 1;
+    }
+
+    img:first-of-type {
+      @include convex(5px, 20px);
+
+      width: 2em;
+      margin-right: 0.5em;
+      margin-left: 0.5em;
+      border-radius: 50%;
+    }
+  }
+}

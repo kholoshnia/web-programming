@@ -1,0 +1,49 @@
+@import '../abstracts/variables';
+
+#results-plate {
+  position: relative;
+  padding: 1em;
+  text-align: center;
+
+  p:first-of-type {
+    color: $light-color;
+  }
+}
+
+#results-plate > table {
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  thead, tbody {
+    display: block;
+
+    th, td {
+      width: 5em;
+      text-align: center;
+    }
+  }
+
+  thead {
+    font-weight: $medium-font;
+    padding-bottom: 1em;
+    text-align: center;
+  }
+
+  tbody {
+    overflow-y: scroll;
+    height: 34em;
+
+    tr:hover {
+      background-color: $row-color;
+    }
+
+    td {
+      overflow: hidden;
+      max-width: 5em;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      text-overflow: ellipsis;
+      border-top: 1px solid $light-color;
+    }
+  }
+}
