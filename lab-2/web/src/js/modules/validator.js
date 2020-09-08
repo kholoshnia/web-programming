@@ -14,29 +14,23 @@ const WRONG_R_LABEL = createWrongLabel('wrong r value');
  * array or range of possible values.
  */
 class Validator {
-  #xValues = [-5, -4, -3, -2, -1, -0, -1, -2, -3];
-  #rValues = [1, 1.5, 2, 2.5, 3];
+  #xValues = [-4, -3, -2, -1, -0, -1, -2, -3, 4];
 
   #checkX = (xValue) => this.#xValues.includes(xValue);
   #checkY = (yValue) => yValue > -3 && yValue < 3;
-  #checkR = (rValue) => this.#rValues.includes(rValue);
+  #checkR = (rValue) => rValue > 1 && rValue < 4;
 
-  #isEmpty = (value) => value == null || value.length === 0;
   #isBlank = (value) => value == null || value.trim().length === 0;
   #isNumber = (value) => !isNaN(value) && isFinite(value);
 
   /**
-   * Validates an array of x values. Returns true if the values are valid.
-   * @param xValues x values
+   * Validates x value. Returns true if the values are valid.
+   * @param xValue x value
    * @returns {boolean} true if values are valid
    */
-  checkXValues = (xValues) => {
-    if (this.#isEmpty(xValues) || !Array.isArray(xValues)) return false;
-    xValues.forEach((xValue) => {
-      if (!this.#isBlank(xValue) || !this.#isNumber(xValue) ||
-          !this.#checkX(xValue)) return false;
-    });
-    return true;
+  checkXValue = (xValue) => {
+    return !this.#isBlank(xValue) && this.#isNumber(xValue) &&
+        this.#checkX(Number(xValue));
   };
 
   /**
@@ -65,23 +59,23 @@ export const validator = new Validator();
 /**
  * Validates x, y and r values. Returns false if at least one value is wrong,
  * else returns true. Sets validity to invalid if value is wrong.
- * @param xValues x values
+ * @param xValue x value
  * @param yValue y value
  * @param rValue r value
- * @param $xCheckbox jQuery x checkboxes
+ * @param $xSelect jQuery x select
  * @param $yText jQuery y text field
- * @param $rRadio jQuery r radio buttons
+ * @param $rText jQuery r radio buttons
  * @returns {boolean} Returns false if at least one value is wrong
  */
 export const validateValues = ({
-  xValues, yValue, rValue,
-  $xCheckbox, $yText, $rRadio,
+  xValue, yValue, rValue,
+  $xSelect, $yText, $rText,
 }) => {
   let valid = true;
 
-  if (!validator.checkXValues(xValues)) {
-    $xCheckbox.validity('invalid', {
-      objectValue: xValues,
+  if (!validator.checkXValue(xValue)) {
+    $xSelect.validity('invalid', {
+      objectValue: xValue,
       chooseMessage: CHOOSE_X_LABEL,
       wrongMessage: WRONG_X_LABEL,
     });
@@ -98,7 +92,7 @@ export const validateValues = ({
   }
 
   if (!validator.checkRValue(rValue)) {
-    $rRadio.validity('invalid', {
+    $rText.validity('invalid', {
       objectValue: rValue,
       chooseMessage: CHOOSE_R_LABEL,
       wrongMessage: WRONG_R_LABEL,

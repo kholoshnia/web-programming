@@ -1,5 +1,4 @@
 /*! Main styles file. */
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 @import 'abstracts/variables';
@@ -23,5 +22,7 @@
 
 body {
   @include main-font;
-  background-color: $background-color;
+
+  transition: var(--normal-transition);
+  background-color: var(--background-color);
 }

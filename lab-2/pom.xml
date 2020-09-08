@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.web</groupId>
+    <groupId>ru.lab</groupId>
     <artifactId>lab-2</artifactId>
     <version>1.2</version>
     <packaging>war</packaging>
@@ -26,50 +26,44 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.13.3</version>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
-        <!--<dependency>
+        <dependency>
           <groupId>javax.inject</groupId>
           <artifactId>javax.inject</artifactId>
           <version>1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
+            <version>3.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
           <groupId>javax.enterprise</groupId>
           <artifactId>cdi-api</artifactId>
           <version>2.0.SP1</version>
           <scope>provided</scope>
-        </dependency>-->
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>lab-2</finalName>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>1.3.2</version>
-                    <executions>
-                        <execution>
-                            <id>npm run build (compile)</id>
-                            <goals>
-                                <goal>exec</goal>
-                            </goals>
-                            <phase>compile</phase>
-                            <configuration>
-                                <executable>npm</executable>
-                                <arguments>
-                                    <argument>run</argument>
-                                    <argument>build</argument> <!-- TODO: fix -->
-                                    <argument>-p ${project.basedir}/src/main/webapp</argument>
-                                </arguments>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.1.0</version>
@@ -100,6 +94,16 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

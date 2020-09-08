@@ -6,44 +6,50 @@
 
   position: relative;
   padding: 1em;
-}
 
-#graph-svg {
-  height: 20em;
-  cursor: crosshair;
+  #graph-svg {
+    height: 21em;
+    cursor: crosshair;
 
-  .graph-shape {
-    fill: $fill-color;
-    fill-opacity: 85%;
-  }
+    .graph-shape {
+      fill: var(--fill-color);
+      fill-opacity: 85%;
+    }
 
-  .graph-axle-text,
-  .graph-axle-arrow,
-  .graph-label {
-    fill: $stroke-color;
-  }
+    .graph-axle-text,
+    .graph-axle-arrow,
+    .graph-label {
+      fill: var(--stroke-color);
+    }
 
-  .graph-axle-line,
-  .graph-axle-arrow,
-  .graph-point {
-    stroke: $stroke-color;
-  }
+    .graph-label {
+      overflow: hidden;
+      width: 10px;
+      text-overflow: ellipsis;
+    }
 
-  .dotted-line-x,
-  .dotted-line-y,
-  .dotted-raw-x,
-  .dotted-raw-y {
-    stroke: $stroke-color;
-    stroke-dasharray: 5;
-  }
+    .graph-axle-line,
+    .graph-axle-arrow,
+    .graph-point {
+      stroke: var(--stroke-color);
+    }
 
-  .dotted-raw-x,
-  .dotted-raw-y {
-    stroke-width: 2px;
-    stroke: $dotted-line-color;
-  }
+    .dotted-line-x,
+    .dotted-line-y,
+    .dotted-raw-x,
+    .dotted-raw-y {
+      stroke: var(--stroke-color);
+      stroke-dasharray: 5;
+    }
 
-  .crossing {
-    fill: $dotted-line-color;
+    .dotted-raw-x,
+    .dotted-raw-y {
+      stroke-width: 2px;
+      stroke: var(--dotted-line-color);
+    }
+
+    .crossing {
+      fill: var(--dotted-line-color);
+    }
   }
 }

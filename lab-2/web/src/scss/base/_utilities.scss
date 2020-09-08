@@ -33,7 +33,7 @@
   @include convex(5px, 20px);
 
   border-radius: 32px;
-  background-color: $background-color;
+  background-color: var(--background-color);
 }
 
 .wrong-plate {
@@ -44,5 +44,5 @@
   font-size: 12px;
   position: absolute;
   z-index: 1;
-  color: $wrong-value-color;
+  color: var(--wrong-value-color);
 }

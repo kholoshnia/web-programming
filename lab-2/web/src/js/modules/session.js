@@ -17,34 +17,26 @@ const saveItem = (key, value) => {
 
 /**
  * Saves the input form and results table to session storage.
- * @param xValues x values
+ * @param xValue x value
  * @param yValue y value
  * @param rValue r value
  * @param resultsTable results table
  */
-export const storeSession = ({xValues, yValue, rValue, resultsTable}) => {
-  saveItem(X_VALUES_KEY, xValues);
+export const storeSession = ({xValue, yValue, rValue, resultsTable}) => {
+  saveItem(X_VALUES_KEY, xValue);
   saveItem(Y_VALUE_KEY, yValue);
   saveItem(R_VALUE_KEY, rValue);
   saveItem(RESULTS_KEY, resultsTable);
 };
 
 /**
- * Loads x values, sets checkboxes accordingly.
- * @param $xCheckbox x checkboxes
- * @param xValues x values
+ * Loads x values, sets select accordingly.
+ * @param $xSelect x select
+ * @param xValue x values
  */
-const loadXValues = ($xCheckbox, xValues) => {
-  const values = xValues.split(',');
-  $xCheckbox.each((index, element) => {
-    const $element = $(element);
-    values.forEach((el) => {
-      if ($element.val() === el) {
-        $element.prop('checked', true);
-        $element.change();
-      }
-    });
-  });
+const loadXValue = ($xSelect, xValue) => {
+  $xSelect.val(xValue);
+  $xSelect.change();
 };
 
 /**
@@ -58,35 +50,30 @@ const loadYValue = ($yText, yValue) => {
 };
 
 /**
- * Loads r value, sets radio buttons accordingly.
- * @param $rRadio r radio buttons
+ * Loads r value to the text field.
+ * @param $rText r radio buttons
  * @param rValue r value
  */
-const loadRValue = ($rRadio, rValue) => {
-  $rRadio.each((index, element) => {
-    const $element = $(element);
-    if ($element.val() === rValue) {
-      $element.prop('checked', true);
-      $element.change();
-    }
-  });
+const loadRValue = ($rText, rValue) => {
+  $rText.val(rValue);
+  $rText.keyup();
 };
 
 /**
  * Loads the input form and results table from the session storage.
- * @param $xCheckbox jQuery x checkboxes
- * @param $yText jQuery y text
- * @param $rRadio jQuery r radio buttons
+ * @param $xSelect jQuery x select
+ * @param $yText jQuery y text field
+ * @param $rText jQuery r text field
  * @param results results table object
  */
-export const loadSession = ({$xCheckbox, $yText, $rRadio, results}) => {
+export const loadSession = ({$xSelect, $yText, $rText, results}) => {
   const rValue = sessionStorage.getItem(R_VALUE_KEY);
-  const xValues = sessionStorage.getItem(X_VALUES_KEY);
+  const xValue = sessionStorage.getItem(X_VALUES_KEY);
   const yValue = sessionStorage.getItem(Y_VALUE_KEY);
   const resultsTable = sessionStorage.getItem(RESULTS_KEY);
 
-  if (rValue != null) loadRValue($rRadio, rValue);
-  if (xValues != null) loadXValues($xCheckbox, xValues);
+  if (rValue != null) loadRValue($rText, rValue);
+  if (xValue != null) loadXValue($xSelect, xValue);
   if (yValue != null) loadYValue($yText, yValue);
   if (resultsTable != null) results.setTable(resultsTable);
 };

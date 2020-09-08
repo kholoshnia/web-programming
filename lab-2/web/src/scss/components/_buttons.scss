@@ -6,14 +6,14 @@
   @include convex(5px, 20px);
 
   font-size: 14px;
-  font-weight: $medium-font;
+  font-weight: var(--medium-font);
   padding: 10px 12px;
   cursor: pointer;
-  transition: $normal-transition;
+  transition: var(--normal-transition);
   border: 0;
   border-radius: 40px;
   outline: 0;
-  background-color: $background-color;
+  background-color: var(--background-color);
 
   &:hover,
   &:focus {

@@ -4,9 +4,9 @@ import {createWrongLabel} from '../plugins/validity.jquery';
 $.fn.label = label;
 
 const CHOOSE_R_GRAPH_LABEL = createWrongLabel('choose r value to use graph',
-    {leftOffset: 58, topOffset: 95});
-const WRONG_R_GRAPH_LABEL = createWrongLabel('wrong r value, cannot use graph',
-    {leftOffset: 53, topOffset: 95});
+    {leftOffset: 52, topOffset: 92});
+const WRONG_R_GRAPH_LABEL = createWrongLabel('wrong r value',
+    {leftOffset: 73, topOffset: 92});
 
 /** The Graph class provides methods for interacting with the svg graph. */
 export default class Graph {
@@ -105,7 +105,7 @@ export default class Graph {
    * new ones to the graph.
    * @param xValues x values
    */
-  setXValues = (xValues) => {
+  setXValue = (xValue) => {
     this.#xValues = xValues;
     this.#removeXLines();
     this.#removeCrossings();
@@ -220,11 +220,11 @@ export default class Graph {
   };
 
   /**
-   * Saves raw values. Resets values if clicked on the existing line.
+   * Saves raw value. Resets values if clicked on the existing line.
    * @param $yText jQuery y text
    * @param $xCheckbox j Query x checkboxes
    */
-  saveRawValues = ($yText, $xCheckbox) => {
+  saveRawValue = ($yText, $xCheckbox) => {
     if (this.#rawXValue == null || this.#rawYValue == null) return;
 
     $xCheckbox.each((index, element) => {

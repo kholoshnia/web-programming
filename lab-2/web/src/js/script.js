@@ -9,14 +9,29 @@ import {loadSession, storeSession} from './modules/session';
 $.fn.matcher = matcher;
 $.fn.validity = validity;
 
-const URL = 'php/server.php';
-
 $(() => {
-  const $xCheckbox = $('input:checkbox[name="x-value"]');
-  const $yText = $('#text-y-1');
-  const $rRadio = $('input:radio[name="r-value"]');
+  const $body = $('body');
 
-  const values = new Values({$xCheckbox, $yText, $rRadio});
+  /** Sets theme in accordance with system preferences. */
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    $body.addClass('dark');
+    $body.removeClass('light');
+  }
+
+  const $themeSwitcher = $('#theme-switcher');
+
+  /** Toggles theme on switch button click. */
+  $themeSwitcher.click(() => {
+    $body.toggleClass('light');
+    $body.toggleClass('dark');
+    $themeSwitcher.toggleClass('active');
+  });
+
+  const $xSelect = $('#x-select');
+  const $yText = $('#text-y');
+  const $rText = $('#text-r');
+
+  const values = new Values({$xSelect, $yText, $rText});
 
   const $graphSvg = $('#graph-svg');
 
@@ -36,6 +51,12 @@ $(() => {
     $noDataYetText: $('#results-plate > p:first-of-type'),
   });
 
+  /** Prevents y text field from not number input. */
+  $yText.matcher(/^[+-]?\d*?[.,]?\d*?$/);
+
+  /** Prevents r text field from not number input. */
+  $rText.matcher(/^\+?\d*?[.,]?\d*?$/);
+
   /**
    * Shows graph error message on mouse enter if r value is not selected or
    * wrong.
@@ -54,23 +75,20 @@ $(() => {
   /** Sets graph x and y values in accordance with mouse position. */
   $graphSvg.mousemove((event) => {
     const offset = $graphSvg.offset();
-    graph.setRawXValue((event.pageX - offset.left) * SCALE_X, $xCheckbox);
+    graph.setRawXValue((event.pageX - offset.left) * SCALE_X, $xSelect);
     graph.setRawYValue((event.pageY - offset.top) * SCALE_Y);
   });
 
   /** Saves raw values on graph click. */
   $graphSvg.click(() => {
-    graph.saveRawValues($yText, $xCheckbox);
+    graph.saveRawValue($xSelect);
   });
 
-  /** Prevents y text field from not number input. */
-  $yText.matcher(/^[+-]?\d*?[.,]?\d*?$/);
-
-  /** Resets validity if x values are correct. Sets graph x values. */
-  $xCheckbox.change(() => {
-    const xValues = values.getXValues();
-    if (validator.checkXValues(xValues)) $xCheckbox.validity('');
-    graph.setXValues(xValues);
+  /** Resets validity if x value are correct. Sets graph x value. */
+  $xSelect.change(() => {
+    const xValue = values.getXValue();
+    if (validator.checkXValue(xValue)) $xSelect.validity('');
+    graph.setXValue(xValue);
   });
 
   /** Resets validity if y value is correct. Sets graph y value. */
@@ -81,9 +99,9 @@ $(() => {
   });
 
   /** Resets validity if r value is correct. Sets graph r value. */
-  $rRadio.change(() => {
+  $rText.keyup(() => {
     const rValue = values.getRValue();
-    if (validator.checkRValue(rValue)) $rRadio.validity('');
+    if (validator.checkRValue(rValue)) $rText.validity('');
     graph.setRValue(rValue);
   });
 
@@ -97,13 +115,13 @@ $(() => {
     event.preventDefault();
     results.hideError();
 
-    const xValues = values.getXValues();
+    const xValue = values.getXValue();
     const yValue = values.getYValue();
     const rValue = values.getRValue();
 
     if (!validateValues({
-      xValues, yValue, rValue,
-      $xCheckbox, $yText, $rRadio,
+      xValue, yValue, rValue,
+      $xSelect, $yText, $rText,
     })) return false;
 
     request.get(URL).
@@ -112,7 +130,7 @@ $(() => {
           response: 7500,
         }).
         query({
-          'x-values[]': xValues,
+          'x-value': xValue,
           'y-value': yValue,
           'r-value': rValue,
         }).
@@ -122,21 +140,21 @@ $(() => {
   });
 
   /**
-   * Clears the form and graph. Clears the x input checkboxes, the y text
-   * field, and the r input radio buttons and its validity. Sets default graph
-   * labels with R characters.
+   * Clears the form and graph. Clears the x select, the y text field, and the
+   * r text field and its validity. Sets default graph labels with R
+   * characters.
    */
   $('#clear-form-button').click(() => {
-    $xCheckbox.prop('checked', false).validity('');
+    $xSelect.val('Select value').validity('');
     $yText.val('').validity('');
-    $rRadio.prop('checked', false).validity('');
+    $rText.val('').validity('');
     graph.resetValues();
   });
 
   /** Clears table by sending clear request. */
   $('#clear-table-button').click(() => {
     results.hideError();
-    request.get(URL).
+    request.del(URL).
         timeout({
           deadline: 5000,
           response: 7500,
@@ -147,11 +165,11 @@ $(() => {
         catch((error) => results.showError(error));
   });
 
-  loadSession({$xCheckbox, $yText, $rRadio, results});
+  loadSession({$xSelect, $yText, $rText, results});
 
   $(window).bind('beforeunload',
       () => storeSession({
-        xValues: values.getXValues(),
+        xValue: values.getXValue(),
         yValue: values.getYValue(),
         rValue: values.getRValue(),
         resultsTable: results.getTable(),

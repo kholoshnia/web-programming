@@ -1,9 +1,20 @@
-#main-grid {
-  margin: auto;
-  border-spacing: 2em;
-}
+#main {
+  display: grid;
+  justify-content: center;
+  margin: 2em;
+  grid-gap: 2em;
+  grid-template-areas: 'graph results'
+                       'input results';
 
-#input-grid {
-  display: flex;
-  text-align: center;
+  #graph-plate {
+    grid-area: graph;
+  }
+
+  #input-plate {
+    grid-area: input;
+  }
+
+  #results-plate {
+    grid-area: results;
+  }
 }

@@ -1,35 +1,32 @@
 /** Values class provides methods for getting x, y, and r values. */
 export default class Values {
-  #$xCheckbox;
+  #$xSelect;
   #$yText;
-  #$rRadio;
+  #$rText;
 
   /**
    * Values constructor accepts jQuery objects as parameters.
-   * @param $xCheckbox jQuery x checkboxes
+   * @param $xSelect jQuery x select
    * @param $yText jQuery y text field
-   * @param $rRadio jQuery r radio buttons
+   * @param $rText jQuery r text field
    */
-  constructor({$xCheckbox, $yText, $rRadio}) {
-    this.#$xCheckbox = $xCheckbox;
+  constructor({$xSelect, $yText, $rText}) {
+    this.#$xSelect = $xSelect;
     this.#$yText = $yText;
-    this.#$rRadio = $rRadio;
+    this.#$rText = $rText;
   }
 
   /**
-   * Returns an array of x values in string format from checkboxes. If there
-   * are no selected checkboxes, returns null.
-   * @returns {string[]|null} x values
+   * Returns the x value in string format from the select. If there are no
+   * selected checkboxes, returns null.
+   * @returns {string|null} x value
    */
-  getXValues = () => {
-    const result = this.#$xCheckbox.map((index, element) => {
-      if (element.checked) return $(element).val();
-    }).toArray();
-    return result != null && result.length !== 0 ? result : null;
+  getXValue = () => {
+    return this.#$xSelect.val();
   };
 
   /**
-   * Returns the y value in string format from the y text field. If there is no
+   * Returns the y value in string format from the text field. If there is no
    * text, returns null.
    * @returns {string|null} y value
    */
@@ -41,12 +38,14 @@ export default class Values {
   };
 
   /**
-   * Returns the r value in string format from the radio buttons. If there is
+   * Returns the r value in string format from the text field. If there is
    * no selected radio buttons, returns null.
    * @returns {string|null} r value
    */
   getRValue = () => {
-    const result = this.#$rRadio.filter(':checked').val();
-    return result != null && result.length !== 0 ? result : null;
+    const result = this.#$rText.val();
+    return result != null && result.length !== 0
+        ? result.replace(',', '.')
+        : null;
   };
 }
