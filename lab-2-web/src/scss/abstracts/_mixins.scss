@@ -1,0 +1,43 @@
+@import 'variables';
+
+@mixin main-font {
+  font-family: var(--roboto-font);
+  font-size: var(--font-size);
+  color: var(--font-color);
+  text-shadow: var(--text-shadow);
+}
+
+@mixin align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin convex($distance, $blur: ($distance * 2), $outline: false) {
+  @if ($outline) {
+    box-shadow: inset 0 0 0 1px var(--wrong-value-color),
+            (-$distance) (-$distance) $blur var(--light-shadow),
+            ($distance) ($distance) $blur var(--dark-shadow);
+  } @else {
+    box-shadow: (-$distance) (-$distance) $blur var(--light-shadow),
+            ($distance) ($distance) $blur var(--dark-shadow);
+  }
+}
+
+@mixin concave($distance, $blur: ($distance * 2), $outline: false) {
+  @if ($outline) {
+    box-shadow: 0 0 0 1px var(--wrong-value-color),
+    inset (-$distance) (-$distance) $blur var(--light-shadow),
+    inset $distance $distance $blur var(--dark-shadow);
+  } @else {
+    box-shadow: inset (-$distance) (-$distance) $blur var(--light-shadow),
+    inset $distance $distance $blur var(--dark-shadow);
+  }
+}
+
+@mixin bend($distance, $blur: ($distance * 2), $distance-inset, $blur-inset: ($distance-inset * 2)) {
+  box-shadow: (-$distance) (-$distance) $blur var(--light-shadow),
+  $distance $distance $blur var(--dark-shadow),
+  inset (-$distance-inset) (-$distance-inset) $blur-inset var(--light-shadow),
+  inset $distance-inset $distance-inset $blur-inset var(--dark-shadow);
+}

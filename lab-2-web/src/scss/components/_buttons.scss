@@ -1,0 +1,26 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+.convex-button {
+  @include main-font;
+  @include convex(5px, 20px);
+
+  font-size: 14px;
+  font-weight: var(--medium-font);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: var(--normal-transition);
+  border: 0;
+  border-radius: 40px;
+  outline: 0;
+  background-color: var(--background-color);
+
+  &:hover,
+  &:focus {
+    @include convex(2px, 5px);
+  }
+
+  &:active {
+    @include concave(1px);
+  }
+}

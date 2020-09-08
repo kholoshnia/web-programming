@@ -1,0 +1,51 @@
+@import '../abstracts/variables';
+
+#results-plate {
+  position: relative;
+  max-width: 34em;
+  padding: 1em;
+  text-align: center;
+
+  span:first-of-type {
+    color: var(--light-color);
+  }
+
+  > table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    thead, tbody {
+      display: block;
+
+      th, td {
+        width: 6em;
+        text-align: center;
+      }
+    }
+
+    thead {
+      font-weight: var(--medium-font);
+      padding-bottom: 1em;
+      text-align: center;
+    }
+
+    tbody {
+      overflow-y: scroll;
+      height: 32em;
+
+      tr:hover {
+        background-color: var(--row-color);
+      }
+
+      td {
+        overflow: hidden;
+        max-width: 6em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-overflow: ellipsis;
+        border-top: 1px solid var(--light-color)
+      }
+    }
+  }
+}

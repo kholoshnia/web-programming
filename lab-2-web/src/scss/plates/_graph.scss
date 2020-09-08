@@ -1,0 +1,55 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+#graph-plate {
+  @include align-center;
+
+  position: relative;
+  padding: 1em;
+
+  #graph-svg {
+    height: 21em;
+    cursor: crosshair;
+
+    .graph-shape {
+      fill: var(--fill-color);
+      fill-opacity: 85%;
+    }
+
+    .graph-axle-text,
+    .graph-axle-arrow,
+    .graph-label {
+      fill: var(--stroke-color);
+    }
+
+    .graph-label {
+      overflow: hidden;
+      width: 10px;
+      text-overflow: ellipsis;
+    }
+
+    .graph-axle-line,
+    .graph-axle-arrow,
+    .graph-point {
+      stroke: var(--stroke-color);
+    }
+
+    .dotted-line-x,
+    .dotted-line-y,
+    .dotted-raw-x,
+    .dotted-raw-y {
+      stroke: var(--stroke-color);
+      stroke-dasharray: 5;
+    }
+
+    .dotted-raw-x,
+    .dotted-raw-y {
+      stroke-width: 2px;
+      stroke: var(--dotted-line-color);
+    }
+
+    .crossing {
+      fill: var(--dotted-line-color);
+    }
+  }
+}
