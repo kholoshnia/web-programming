@@ -1,11 +1,11 @@
 import {createWrongLabel} from '../plugins/validity.jquery';
 
 const TABLE_ERROR = createWrongLabel('answer does not contain table',
-    {leftOffset: 37, topOffset: 97.5});
+    {leftOffset: 37, topOffset: 95});
 const TIMEOUT_ERROR = createWrongLabel('timeout error',
-    {leftOffset: 45, topOffset: 97.5});
+    {leftOffset: 45, topOffset: 95});
 const RECEIVE_ERROR = createWrongLabel('receiving response error',
-    {leftOffset: 40, topOffset: 97.5});
+    {leftOffset: 40, topOffset: 95});
 
 /**
  * The result class provides methods for interacting with the results table.
@@ -27,24 +27,8 @@ export default class Results {
 
   #tableIsEmpty = (table) => table.children('tbody').children().length === 0;
 
-  /**
-   * Sets new table. Replaces the old results table with the new one. If the
-   * table body is empty after replacement, the no data yet text fades in. Does
-   * not set the result table if the specified value is null or not a table.
-   * Shows error if the specified value is not a table.
-   * @param table results table as string.
-   */
-  setTable = (table) => {
-    if (table == null) return;
-    if (!$(table).is('table')) {
-      $(this.#resultsTableSelector).
-          parent().
-          addClass('wrong-plate').
-          append(TABLE_ERROR);
-      return;
-    }
-
-    $(this.#resultsTableSelector).replaceWith(table);
+  /** Sets "no data yet label if  table is empty. */
+  setLabel = () => {
     this.#tableIsEmpty($(this.#resultsTableSelector))
         ? this.#$noDataYetText.fadeIn()
         : this.#$noDataYetText.fadeOut();

@@ -1,4 +1,4 @@
-package ru.lab.services.hitChecker;
+package ru.lab.services.checker;
 
 public interface HitChecker {
   /**

@@ -1,16 +1,13 @@
 package ru.lab.model;
 
-import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 /** Entity class for hit result. Used to save result in result list. */
 public final class HitResult {
-  @NotNull private Double xValue;
-  @NotNull private Double yValue;
-  @NotNull private Double rValue;
-  @NotNull private Boolean hitResult;
-
-  /** Dot-nothing constructor. */
-  public HitResult() {}
+  private final Double xValue;
+  private final Double yValue;
+  private final Double rValue;
+  private final Boolean result;
 
   /**
    * Default hit result constructor.
@@ -18,44 +15,58 @@ public final class HitResult {
    * @param xValue x value
    * @param yValue y value
    * @param rValue r value
-   * @param hitResult hit result
+   * @param result result
    */
-  public HitResult(Double xValue, Double yValue, Double rValue, Boolean hitResult) {
+  public HitResult(Double xValue, Double yValue, Double rValue, Boolean result) {
     this.xValue = xValue;
     this.yValue = yValue;
     this.rValue = rValue;
-    this.hitResult = hitResult;
+    this.result = result;
   }
 
-  public Double getXValue() {
+  public Double getX() {
     return xValue;
   }
 
-  public void setXValue(Double xValue) {
-    this.xValue = xValue;
-  }
-
-  public Double getYValue() {
+  public Double getY() {
     return yValue;
   }
 
-  public void setYValue(Double yValue) {
-    this.yValue = yValue;
-  }
-
-  public Double getRValue() {
+  public Double getR() {
     return rValue;
   }
 
-  public void setRValue(Double rValue) {
-    this.rValue = rValue;
+  public Boolean getResult() {
+    return result;
   }
 
-  public Boolean getHitResult() {
-    return hitResult;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    HitResult hitResult = (HitResult) o;
+    return Objects.equals(xValue, hitResult.xValue)
+        && Objects.equals(yValue, hitResult.yValue)
+        && Objects.equals(rValue, hitResult.rValue)
+        && Objects.equals(result, hitResult.result);
   }
 
-  public void setHitResult(Boolean hitResult) {
-    this.hitResult = hitResult;
+  @Override
+  public int hashCode() {
+    return Objects.hash(xValue, yValue, rValue, result);
+  }
+
+  @Override
+  public String toString() {
+    return "HitResult{"
+        + "xValue="
+        + xValue
+        + ", yValue="
+        + yValue
+        + ", rValue="
+        + rValue
+        + ", result="
+        + result
+        + '}';
   }
 }

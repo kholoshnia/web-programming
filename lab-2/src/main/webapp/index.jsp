@@ -1,26 +1,28 @@
+<%@ page import="ru.lab.model.HitResult" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%
+  String theme = (String) request.getAttribute("Theme");
+  System.out.println(theme);
+  if (theme == null) {
+    theme = "light";
+  }
+%>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta content="width=400, maximum-scale=1" name="viewport"/>
   <title>Lab 2</title>
-  <!-- generics -->
   <link href="img/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
   <link href="img/favicon/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
   <link href="img/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-
-  <!-- Android -->
   <link href="img/favicon/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
-
-  <!-- iOS -->
   <link href="img/favicon/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
   <link href="img/favicon/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
   <link href="img/favicon/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
-
   <link href="css/vendors.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
 </head>
-<body class="light">
+<body class="<%=theme%>">
 <header class="convex-plate" id="header">
   <span>Kholoshnia Vadim Dmitrievich P3213</span>
   <div>
@@ -86,49 +88,62 @@
         <th>Y value</th>
         <th>R value</th>
         <th>Area hit</th>
-        <th>Current time</th>
-        <th>Execution time</th>
       </tr>
       </thead>
       <tbody>
+      <jsp:useBean id="hitResultStorage" scope="session" class="ru.lab.model.storage.HitResultStorageImpl"/>
+      <% for (HitResult hitResult : hitResultStorage.getHitResultList()) {%>
+      <tr>
+        <td><%=hitResult.getX()%>
+        </td>
+        <td><%=hitResult.getY()%>
+        </td>
+        <td><%=hitResult.getR()%>
+        </td>
+        <td><%=hitResult.getResult()%>
+        </td>
+      </tr>
+      <%}%>
       </tbody>
     </table>
   </div>
 
   <div class="convex-plate no-selection" id="input-plate">
-    <div id="x-input">
-      <label for="x-select">X:</label>
-      <select class="convex-select" id="x-select">
-        <option disabled selected>Select value</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-        <option value="0">0</option>
-        <option value="-1">-1</option>
-        <option value="-2">-2</option>
-        <option value="-3">-3</option>
-        <option value="-4">-4</option>
-      </select>
-    </div>
+    <form action="server" method="get" id="input-from">
+      <div id="x-input">
+        <label for="x-select">X:</label>
+        <select class="convex-select" id="x-select" name="x-value">
+          <option disabled selected>Select value</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+          <option value="0">0</option>
+          <option value="-1">-1</option>
+          <option value="-2">-2</option>
+          <option value="-3">-3</option>
+          <option value="-4">-4</option>
+        </select>
+      </div>
 
-    <div id="y-input">
-      <label for="text-y">Y:</label>
-      <input autocomplete="off" class="concave-text" id="text-y" name="y-value" placeholder="Enter value"
-             type="text">
-    </div>
+      <div id="y-input">
+        <label for="text-y">Y:</label>
+        <input autocomplete="off" class="concave-text" id="text-y" name="y-value" placeholder="Enter value"
+               type="text">
+      </div>
 
-    <div id="r-input">
-      <label for="text-r">R:</label>
-      <input autocomplete="off" class="concave-text" id="text-r" name="r-value" placeholder="Enter value"
-             type="text">
-    </div>
+      <div id="r-input">
+        <label for="text-r">R:</label>
+        <input autocomplete="off" class="concave-text" id="text-r" name="r-value" placeholder="Enter value"
+               type="text">
+      </div>
 
-    <div>
-      <input class="convex-button" id="submit-button" type="submit" value="Submit">
-      <input class="convex-button" id="clear-form-button" type="button" value="Clear form">
-      <input class="convex-button" id="clear-table-button" type="button" value="Clear table">
-    </div>
+      <div>
+        <input class="convex-button" id="submit-button" type="submit" value="Submit">
+        <input class="convex-button" id="clear-form-button" type="button" value="Clear form">
+        <input class="convex-button" id="clear-table-button" type="button" value="Clear table">
+      </div>
+    </form>
   </div>
 </main>
 
