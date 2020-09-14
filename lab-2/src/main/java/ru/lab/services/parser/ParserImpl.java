@@ -4,10 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.lab.services.parser.exceptions.ParsingException;
 
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import java.util.ResourceBundle;
 
-@Stateless
+@Stateful
 public class ParserImpl implements Parser {
   private static final Logger logger = LogManager.getLogger(ParserImpl.class);
 

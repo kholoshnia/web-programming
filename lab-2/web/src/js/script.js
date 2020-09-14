@@ -141,7 +141,7 @@ $(() => {
       $xSelect, $yText, $rText,
     })) return false;
 
-    $inputForm.get(0).setAttribute('Theme', $body.attr('class')); // TODO: fix.
+    $inputForm.get(0).setAttribute('Theme', $body.attr('class'));
   });
 
   /**
@@ -159,7 +159,7 @@ $(() => {
   /** Clears table by sending clear request. */
   $('#clear-table-button').click(() => {
     results.hideError();
-    request.delete(URL).
+    request.get(URL).
         timeout({
           deadline: 5000,
           response: 7500,

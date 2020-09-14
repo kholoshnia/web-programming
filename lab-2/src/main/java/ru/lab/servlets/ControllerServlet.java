@@ -17,14 +17,13 @@ public final class ControllerServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
+    if (req.getAttribute("clear") != null) {
+      logger.info(() -> "Got clear results request, forwarding...");
+      req.getRequestDispatcher("/clear-results").forward(req, resp);
+      return;
+    }
+
     logger.info(() -> "Got area check request, forwarding...");
     req.getRequestDispatcher("/area-check").forward(req, resp);
-  }
-
-  @Override
-  protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
-    logger.info(() -> "Got clear results request, forwarding...");
-    req.getRequestDispatcher("/clear-results").forward(req, resp);
   }
 }

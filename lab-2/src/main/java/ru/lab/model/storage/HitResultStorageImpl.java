@@ -5,14 +5,10 @@ import org.apache.logging.log4j.Logger;
 import ru.lab.model.HitResult;
 import ru.lab.model.storage.exceptions.HitResultStorageException;
 
-import javax.ejb.Stateful;
-import javax.enterprise.context.SessionScoped;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-@Stateful
-@SessionScoped
 public class HitResultStorageImpl implements HitResultStorage {
   private static final Logger logger = LogManager.getLogger(HitResultStorageImpl.class);
 

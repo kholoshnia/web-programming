@@ -5,6 +5,10 @@
   padding: 1em;
   text-align: center;
 
+  form {
+    margin-block-end: 0;
+  }
+
   select,
   input[type='text'] {
     width: 100%;

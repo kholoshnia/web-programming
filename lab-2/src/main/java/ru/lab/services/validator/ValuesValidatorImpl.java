@@ -4,12 +4,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.lab.services.validator.exceptions.ValidationException;
 
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-@Stateless
+@Stateful
 public class ValuesValidatorImpl implements ValuesValidator {
   private static final Logger logger = LogManager.getLogger(ValuesValidatorImpl.class);
 
