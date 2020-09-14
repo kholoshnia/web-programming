@@ -61,3 +61,6 @@ dist
 
 # WebStorm files
 .idea
+
+# Maven build files
+target
