@@ -8,6 +8,7 @@
 
   span:first-of-type {
     color: var(--light-color);
+    display: none;
   }
 
   > table {
@@ -32,7 +33,7 @@
 
     tbody {
       overflow-y: scroll;
-      height: 32em;
+      height: 36em;
 
       tr:hover {
         background-color: var(--row-color);

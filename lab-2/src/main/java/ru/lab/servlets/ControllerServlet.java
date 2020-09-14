@@ -17,7 +17,7 @@ public final class ControllerServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    if (req.getAttribute("clear") != null) {
+    if (req.getParameter("clear") != null) {
       logger.info(() -> "Got clear results request, forwarding...");
       req.getRequestDispatcher("/clear-results").forward(req, resp);
       return;

@@ -9,7 +9,7 @@ public interface Parser {
    *
    * @param doubleString double string to parse
    * @return parsed double
-   * @throws ParsingException - in case of any parsing exception
+   * @throws ParsingException - in case of parsing exceptions
    */
   Double parseDouble(String doubleString) throws ParsingException;
 }

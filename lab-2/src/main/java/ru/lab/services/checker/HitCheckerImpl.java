@@ -3,9 +3,9 @@ package ru.lab.services.checker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 
-@Stateful
+@Stateless
 public class HitCheckerImpl implements HitChecker {
   private static final Logger logger = LogManager.getLogger(HitCheckerImpl.class);
 
@@ -18,7 +18,7 @@ public class HitCheckerImpl implements HitChecker {
 
     boolean result = circleResult || squareResult || triangleResult;
 
-    logger.info(() -> "Got result successfully");
+    logger.info(() -> "Checked hit successfully");
     return result;
   }
 }

@@ -9,14 +9,14 @@ import java.util.List;
 /** The HitResultList class is used to store hit results. */
 public interface HitResultStorage extends Serializable {
   /**
-   * Clears hit results from the storage.
+   * Clears hit results storage.
    *
    * @throws HitResultStorageException - in case of storage clearing exceptions
    */
   void clearHitResults() throws HitResultStorageException;
 
   /**
-   * Adds hit result to the storage
+   * Adds hit result to the storage.
    *
    * @param hitResult hit result to add to the storage
    * @throws HitResultStorageException - in case of adding exceptions

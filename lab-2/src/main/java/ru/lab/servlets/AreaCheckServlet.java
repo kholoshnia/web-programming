@@ -62,8 +62,8 @@ public final class AreaCheckServlet extends HttpServlet {
       return;
     }
 
-    logger.info(() -> "Setting new hit result storage to the session");
     httpSession.setAttribute("hitResultStorage", hitResultStorage);
+    logger.info(() -> "Hit result storage set to the session successfully");
 
     logger.info(() -> "Forwarding to the result page");
     req.setAttribute("Hit-Result", hitResult);

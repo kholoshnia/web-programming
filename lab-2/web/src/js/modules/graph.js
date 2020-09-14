@@ -141,7 +141,7 @@ export default class Graph {
    * @param xValue x value
    */
   setXValue = (xValue) => {
-    if (isNaN(xValue) || xValue == null) return;
+    if (xValue == null) return;
     this.drawXLine(xValue / this.#rValue * 100 + 150);
   };
 
@@ -150,7 +150,7 @@ export default class Graph {
    * @param yValue y value
    */
   setYValue = (yValue) => {
-    if (isNaN(yValue) || yValue == null) return;
+    if (yValue == null) return;
     this.drawYLine(150 - yValue / this.#rValue * 100);
   };
 
@@ -182,5 +182,16 @@ export default class Graph {
     $xSelect.val(this.#xValue);
     $yText.val(this.#yValue);
     $rText.val(this.#rValue);
+  };
+
+  /**
+   * Changes the color of the crossing in accordance with the given result.
+   * @param result last result
+   */
+  setLastResult = (result) => {
+    if (result) {
+      this.#$graphSvg.children('.crossing').
+          css('fill', 'var(--crossing-green-color)');
+    }
   };
 }

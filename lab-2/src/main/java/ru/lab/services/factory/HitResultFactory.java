@@ -11,7 +11,7 @@ public interface HitResultFactory {
    * @param yValue y value
    * @param rValue r value
    * @return new hit result instance
-   * @throws CreatingException - in case of any hit result creating exception
+   * @throws CreatingException - in case of creating exceptions
    */
   HitResult createHitResult(String xValue, String yValue, String rValue) throws CreatingException;
 }

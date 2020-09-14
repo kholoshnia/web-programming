@@ -32,7 +32,7 @@ public class HitResultStorageImpl implements HitResultStorage {
   @Override
   public void clearHitResults() throws HitResultStorageException {
     for (HitResult hitResult : hitResultList) {
-      if (hitResultList.remove(hitResult)) {
+      if (!hitResultList.remove(hitResult)) {
         logger.error(() -> "Error removing element");
         throw new HitResultStorageException(CLEAR_HIT_RESULTS_EXCEPTION);
       }

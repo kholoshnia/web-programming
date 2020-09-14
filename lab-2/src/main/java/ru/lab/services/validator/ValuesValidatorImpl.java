@@ -4,12 +4,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.lab.services.validator.exceptions.ValidationException;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-@Stateful
+@Stateless
 public class ValuesValidatorImpl implements ValuesValidator {
   private static final Logger logger = LogManager.getLogger(ValuesValidatorImpl.class);
 
@@ -36,8 +36,6 @@ public class ValuesValidatorImpl implements ValuesValidator {
 
   @Override
   public void checkValues(Double xValue, Double yValue, Double rValue) throws ValidationException {
-    System.out.println(xValue);
-
     checkXValue(xValue);
     checkYValue(yValue);
     checkRValue(rValue);

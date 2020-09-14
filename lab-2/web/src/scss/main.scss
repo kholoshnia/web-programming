@@ -12,7 +12,7 @@
 
 @import 'plates/graph';
 @import 'plates/input';
-@import 'plates/result';
+@import 'src/scss/plates/results';
 
 @import 'components/buttons';
 @import 'components/selects';
@@ -21,7 +21,6 @@
 @import 'base/adaptivity';
 
 @import 'pages/error';
-@import 'pages/index';
 @import 'pages/result';
 
 body {

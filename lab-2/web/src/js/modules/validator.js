@@ -69,9 +69,9 @@ export const validator = new Validator();
  * @returns {boolean} Returns false if at least one value is wrong
  */
 export const validateValues = ({
-  xValue, yValue, rValue,
-  $xSelect, $yText, $rText,
-}) => {
+                                 xValue, yValue, rValue,
+                                 $xSelect, $yText, $rText,
+                               }) => {
   let valid = true;
 
   if (!validator.checkXValue(xValue)) {

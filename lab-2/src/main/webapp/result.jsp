@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="ru.lab.model.HitResult" %>
 <%
   HitResult hitResult = (HitResult) request.getAttribute("Hit-Result");
@@ -6,11 +6,6 @@
     request.setAttribute("Error-Message", "Hit result not found.");
     request.getRequestDispatcher("/error.jsp").forward(request, response);
     return;
-  }
-  String theme = (String) request.getAttribute("Theme");
-  System.out.println(theme); // TODO: fix.
-  if (theme == null) {
-    theme = "light";
   }
 %>
 <html lang="en">
@@ -28,7 +23,7 @@
   <link href="css/vendors.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
 </head>
-<body class="<%=theme%>">
+<body class="light">
 <main id="result">
   <div class="convex-plate" id="result-plate">
     <table>
@@ -42,10 +37,14 @@
       </thead>
       <tbody>
       <tr>
-        <td><%=hitResult.getX()%></td>
-        <td><%=hitResult.getY()%></td>
-        <td><%=hitResult.getR()%></td>
-        <td><%=hitResult.getResult() ? "Yes" : "No"%></td>
+        <td><%=hitResult.getX()%>
+        </td>
+        <td><%=hitResult.getY()%>
+        </td>
+        <td><%=hitResult.getR()%>
+        </td>
+        <td><%=hitResult.getResult() ? "Yes" : "No"%>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -56,5 +55,9 @@
     <span>main page</span>
   </button>
 </main>
+<script>
+  const theme = sessionStorage.getItem('theme');
+  if (theme != null) document.body.className = theme;
+</script>
 </body>
 </html>

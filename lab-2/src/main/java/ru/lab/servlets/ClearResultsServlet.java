@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/clear-results")
@@ -20,10 +21,13 @@ public final class ClearResultsServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     try {
-      HitResultStorage hitResultStorage = (HitResultStorage) req.getAttribute("hitResultStorage");
+      HttpSession httpSession = req.getSession();
+      HitResultStorage hitResultStorage =
+          (HitResultStorage) httpSession.getAttribute("hitResultStorage");
 
       if (hitResultStorage != null) {
         hitResultStorage.clearHitResults();
+        httpSession.setAttribute("hitResultStorage", hitResultStorage);
         logger.info(() -> "Hit result storage was cleared successfully");
       }
 
@@ -32,6 +36,7 @@ public final class ClearResultsServlet extends HttpServlet {
       logger.error(() -> "Cannot clear hit result storage", e);
       req.setAttribute("Error-Message", e.getMessage());
       req.getRequestDispatcher("/error.jsp").forward(req, resp);
+      return;
     }
 
     logger.info(() -> "Hit result storage was cleared successfully");

@@ -1,13 +1,8 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%
   String message = (String) request.getAttribute("Error-Message");
   if (message == null || message.trim().isEmpty()) {
     message = "No description presented.";
-  }
-  String theme = (String) request.getAttribute("Theme");
-  System.out.println(theme);
-  if (theme == null) {
-    theme = "light";
   }
 %>
 <html lang="en">
@@ -25,7 +20,7 @@
   <link href="css/vendors.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
 </head>
-<body class="<%=theme%>">
+<body class="light">
 <div class="absolute-center" id="error">
   <h3 class="convex-plate">Error. <%=message%>
   </h3>
@@ -34,5 +29,9 @@
     <span>main page</span>
   </button>
 </div>
+<script>
+  const theme = sessionStorage.getItem('theme');
+  if (theme != null) document.body.className = theme;
+</script>
 </body>
 </html>

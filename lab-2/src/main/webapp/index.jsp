@@ -1,12 +1,5 @@
-<%@ page import="ru.lab.model.HitResult" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%
-  String theme = (String) request.getAttribute("Theme");
-  System.out.println(theme);
-  if (theme == null) {
-    theme = "light";
-  }
-%>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -22,7 +15,7 @@
   <link href="css/vendors.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
 </head>
-<body class="<%=theme%>">
+<body class="light">
 <header class="convex-plate" id="header">
   <span>Kholoshnia Vadim Dmitrievich P3213</span>
   <div>
@@ -91,15 +84,14 @@
       </tr>
       </thead>
       <tbody>
-      <jsp:useBean id="hitResultStorage" scope="session" class="ru.lab.model.storage.HitResultStorageImpl"/>
-      <% for (HitResult hitResult : hitResultStorage.getHitResultList()) {%>
-      <tr>
-        <td><%=hitResult.getX()%></td>
-        <td><%=hitResult.getY()%></td>
-        <td><%=hitResult.getR()%></td>
-        <td><%=hitResult.getResult()%></td>
-      </tr>
-      <%}%>
+      <c:forEach var="hitResult" items="${sessionScope.hitResultStorage.hitResultList}">
+        <tr>
+          <td>${hitResult.x}</td>
+          <td>${hitResult.y}</td>
+          <td>${hitResult.r}</td>
+          <td>${hitResult.result ? "Yes" : "No"}</td>
+        </tr>
+      </c:forEach>
       </tbody>
     </table>
   </div>

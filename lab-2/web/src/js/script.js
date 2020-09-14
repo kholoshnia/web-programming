@@ -54,8 +54,10 @@ $(() => {
 
   const results = new Results({
     resultsTableSelector: '#results-plate > table',
-    $noDataYetText: $('#results-plate > p:first-of-type'),
+    $noDataYetText: $('#results-plate > span:first-of-type'),
   });
+
+  results.setLabel();
 
   /** Prevents y text field from not number input. */
   $yText.matcher(/^[+-]?\d*?[.,]?\d*?$/);
@@ -124,10 +126,8 @@ $(() => {
   });
 
   /**
-   * Validates the form and submits it to the server. Checks the x, y and r
-   * values and sends them to the server. Replaces results table with the new
-   * one from the server response using AJAX technology. Uses superagent
-   * library.
+   * Validates the form before submitting it to the server. Checks the x, y
+   * andr values.
    */
   $submitButton.click(() => {
     results.hideError();
@@ -166,18 +166,17 @@ $(() => {
         }).
         query('clear').
         accept('text/html').
-        then(() => results.setLabel()).
+        then(() => window.location.reload()).
         catch((error) => results.showError(error));
   });
 
-  loadSession({$xSelect, $yText, $rText});
+  loadSession({$xSelect, $yText, $rText, $body});
+  graph.setLastResult(results.getLastResult());
 
-  $(window).bind('beforeunload', () => {
-    results.setLabel();
-    storeSession({
-      xValue: values.getXValue(),
-      yValue: values.getYValue(),
-      rValue: values.getRValue(),
-    });
-  });
+  $(window).bind('beforeunload', () => storeSession({
+    xValue: values.getXValue(),
+    yValue: values.getYValue(),
+    rValue: values.getRValue(),
+    theme: $body.attr('class'),
+  }));
 });

@@ -11,10 +11,10 @@ import ru.lab.services.validator.ValuesValidator;
 import ru.lab.services.validator.exceptions.ValidationException;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import java.util.ResourceBundle;
 
-@Stateful
+@Stateless
 public class HitResultFactoryImpl implements HitResultFactory {
   private static final Logger logger = LogManager.getLogger(HitResultFactoryImpl.class);
 

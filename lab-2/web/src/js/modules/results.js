@@ -1,16 +1,11 @@
 import {createWrongLabel} from '../plugins/validity.jquery';
 
-const TABLE_ERROR = createWrongLabel('answer does not contain table',
-    {leftOffset: 37, topOffset: 95});
 const TIMEOUT_ERROR = createWrongLabel('timeout error',
     {leftOffset: 45, topOffset: 95});
 const RECEIVE_ERROR = createWrongLabel('receiving response error',
     {leftOffset: 40, topOffset: 95});
 
-/**
- * The result class provides methods for interacting with the results table.
- * The class is used to set and get an HTML results table.
- */
+/** The result class provides methods for interacting with the results table. */
 export default class Results {
   #resultsTableSelector;
   #$noDataYetText;
@@ -27,22 +22,18 @@ export default class Results {
 
   #tableIsEmpty = (table) => table.children('tbody').children().length === 0;
 
-  /** Sets "no data yet label if  table is empty. */
+  /** Sets "no data yet label" if table is empty else removes it. */
   setLabel = () => {
     this.#tableIsEmpty($(this.#resultsTableSelector))
         ? this.#$noDataYetText.fadeIn()
         : this.#$noDataYetText.fadeOut();
   };
 
-  /**
-   * Returns the results table as a string. If the table body is empty returns
-   * null.
-   * @return {string} results table as string.
-   */
-  getTable = () => {
-    const $resultsTable = $(this.#resultsTableSelector);
-    return this.#tableIsEmpty($resultsTable) ? null
-        : $resultsTable.get(0).outerHTML;
+  /** Returns last result from the table. */
+  getLastResult = () => {
+    return $(this.#resultsTableSelector).
+        find('td:last').
+        html() === 'Yes';
   };
 
   /**
