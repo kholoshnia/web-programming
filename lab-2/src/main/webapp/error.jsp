@@ -21,14 +21,14 @@
   <link href="css/style.min.css" rel="stylesheet">
 </head>
 <body class="light">
-<div class="absolute-center" id="error">
+<main id="error">
   <h3 class="convex-plate">Error. <%=message%>
   </h3>
   <button class="convex-button back-button" onclick="window.location.replace('index.jsp')">
     <img alt="back" src="img/back.svg">
     <span>main page</span>
   </button>
-</div>
+</main>
 <script>
   const theme = sessionStorage.getItem('theme');
   if (theme != null) document.body.className = theme;

@@ -22,6 +22,13 @@
   <link href="img/favicon/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
   <link href="css/vendors.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
+  <style>
+    @media screen and (max-width: 400px) {
+      #result-plate {
+        width: 21em;
+      }
+    }
+  </style>
 </head>
 <body class="light">
 <main id="result">
