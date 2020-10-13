@@ -1,0 +1,26 @@
+#y-input {
+  max-width: 26.7rem
+}
+
+.r-button {
+  width: 5.128rem;
+  margin: 0.1rem;
+
+  &.is-valid {
+    border-color: var(--green);
+  }
+
+  &.is-invalid {
+    border-color: var(--red);
+  }
+}
+
+#x-input {
+  &.is-valid {
+    color: var(--green);
+  }
+
+  &.is-invalid {
+    color: var(--red);
+  }
+}

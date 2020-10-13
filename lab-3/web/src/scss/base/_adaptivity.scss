@@ -1,0 +1,19 @@
+@media screen and (max-width: 992px) {
+  .clock-col {
+    margin-top: 2.5em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .clock,
+  .date-time {
+    zoom: 85%;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .clock,
+  .date-time {
+    zoom: 75%;
+  }
+}

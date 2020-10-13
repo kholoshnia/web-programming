@@ -18,3 +18,10 @@ Task: develop a servlet and JSP-based web application that determines whether a 
 
 Technologies used:
 - JSP
+
+## Lab 3
+
+Task: develop an application based on the JavaServer Faces Framework that checks if a point is in a specified area on a coordinate plane.
+
+Technologies used:
+- JSF

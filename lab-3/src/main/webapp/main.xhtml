@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:include src="templates/head.xhtml">
+    <ui:param name="page" value="Main"/>
+</ui:include>
+<h:outputStylesheet library="css" name="style.main.min.css"/>
+
+<h:body>
+    <div>
+        <div class="d-flex align-items-center p-3 px-4 mb-3 border-bottom shadow-sm position-relative">
+            <svg fill="#0d6efd" height="2em" viewBox="0 0 16 16" width="2em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"
+                      fill-rule="evenodd"/>
+            </svg>
+            <h5 class="my-0 mr-auto ml-4">Lab 3 - Main page</h5>
+            <div class="font-weight-light d-none d-lg-block text-center absolute-center">
+                <span>Kholoshnia Vadim Dmitrievich</span>
+                <span class="ml-2">Petrenko Nikita Alexeevich</span>
+                <span class="ml-2">P3213</span>
+            </div>
+            <div class="ml-3">
+                <h:link value="Start" outcome="index"/>
+                <span class="p-2">Main</span>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <div class="">
+                <div class="mt-5 d-block d-lg-flex justify-content-around">
+                    <div>
+                        <div id="graph-plate" class="d-flex justify-content-center">
+                            <svg height="400" id="graph-svg" viewBox="0 0 300 300" width="400"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <!-- triangle -->
+                                <polygon class="graph-shape" points="50,150 150,150 150,50"/>
+
+                                <!-- circle -->
+                                <path class="graph-shape" d="M 200 150 A 50 50, 0, 0, 0, 150 100 L 150 150 Z"/>
+
+                                <!-- square -->
+                                <rect class="graph-shape" height="100" width="100" x="50" y="150"/>
+
+                                <!-- axles -->
+                                <text class="graph-axle-text" x="290" y="140">x</text>
+                                <line class="graph-axle-line" x1="0" x2="295" y1="150" y2="150"/>
+                                <polygon class="graph-axle-arrow" points="299,150 290,155 290,145"/>
+
+                                <text class="graph-axle-text" x="160" y="10">y</text>
+                                <line class="graph-axle-line" x1="150" x2="150" y1="5" y2="300"/>
+                                <polygon class="graph-axle-arrow" points="150,1 145,10 155,10"/>
+
+                                <!-- points -->
+                                <line class="graph-point" x1="50" x2="50" y1="145" y2="155"/>
+                                <line class="graph-point" x1="100" x2="100" y1="145" y2="155"/>
+                                <line class="graph-point" x1="200" x2="200" y1="145" y2="155"/>
+                                <line class="graph-point" x1="250" x2="250" y1="145" y2="155"/>
+
+                                <line class="graph-point" x1="145" x2="155" y1="250" y2="250"/>
+                                <line class="graph-point" x1="145" x2="155" y1="200" y2="200"/>
+                                <line class="graph-point" x1="145" x2="155" y1="100" y2="100"/>
+                                <line class="graph-point" x1="145" x2="155" y1="50" y2="50"/>
+
+                                <!-- labels -->
+                                <text class="graph-label r-whole-neg" text-anchor="middle" x="50" y="140">-R</text>
+                                <text class="graph-label r-half-neg" text-anchor="middle" x="100" y="140">-R/2
+                                </text>
+                                <text class="graph-label r-half-pos" text-anchor="middle" x="200" y="140">R/2</text>
+                                <text class="graph-label r-whole-pos" text-anchor="middle" x="250" y="140">R</text>
+
+                                <text class="graph-label r-whole-neg" x="160" y="255">-R</text>
+                                <text class="graph-label r-half-neg" x="160" y="205">-R/2</text>
+                                <text class="graph-label r-half-pos" x="160" y="105">R/2</text>
+                                <text class="graph-label r-whole-pos" x="160" y="55">R</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback mt-3">Please select r value using the buttons.</div>
+                </div>
+
+                <div>
+                    <h4 class="mb-4 mt-5 mt-lg-0 text-center">Control panel</h4>
+                    <div class="d-flex justify-content-center">
+                        <h:form class="d-block">
+                            <label class="font-weight-bold">X value:</label>
+                            <div class="form-group mb-1 d-block" id="x-input">
+                                <h:selectBooleanCheckbox id="x-checkbox-1" type="checkbox" itemLabel="-3"
+                                                         c="#{submitView.XValue1}"/>
+                                <label for="x-checkbox-2" class="mr-4">-3</label>
+
+                                <h:selectBooleanCheckbox id="x-checkbox-2" type="checkbox" itemLabel="-2"
+                                                         value="#{submitView.XValue2}"/>
+                                <label for="x-checkbox-2" class="mr-4">-2</label>
+
+                                <h:selectBooleanCheckbox id="x-checkbox-3" type="checkbox" itemLabel="-1"
+                                                         value="#{submitView.XValue3}"/>
+                                <label for="x-checkbox-3" class="mr-4">-1</label>
+
+                                <h:selectBooleanCheckbox id="x-checkbox-4" type="checkbox" itemLabel="0"
+                                                         value="#{submitView.XValue4}"/>
+                                <label for="x-checkbox-4" class="mr-4">0</label>
+
+                                <h:selectBooleanCheckbox id="x-checkbox-5" type="checkbox" itemLabel="1"
+                                                         value="#{submitView.XValue5}"/>
+                                <label for="x-checkbox-5" class="mr-4">1</label>
+
+                                <h:selectBooleanCheckbox id="x-checkbox-6" type="checkbox" itemLabel="2"
+                                                         value="#{submitView.XValue6}"/>
+                                <label for="x-checkbox-6" class="mr-4">2</label>
+
+                                <h:selectBooleanCheckbox id="x-checkbox-7" type="checkbox" itemLabel="3"
+                                                         value="#{submitView.XValue7}"/>
+                                <label for="x-checkbox-7" class="mr-4">3</label>
+
+                                <div class="d-inline">
+                                    <h:selectBooleanCheckbox id="x-checkbox-8" type="checkbox" itemLabel="4"/>
+                                    <label for="x-checkbox-8">4</label>
+                                </div>
+                            </div>
+                            <div class="invalid-feedback mb-3 mt-0">Please choose x value using the checkboxes.</div>
+                            <div class="valid-feedback mb-3 mt-0">Chosen!</div>
+
+                            <div class="form-group" id="y-input">
+                                <label class="font-weight-bold mb-0" for="y-text">Y value:</label>
+                                <small class="form-text text-muted mb-2">Must be from -5 to 3 not inclusive.</small>
+                                <h:inputText autocomplete="off" styleClass="form-control y-text"
+                                             a:placeholder="Enter value" type="text" id="y-text"
+                                             value="#{submitView.YValue}"/>
+                                <div class="invalid-feedback">Please enter valid y value to the text field.</div>
+                                <div class="valid-feedback mb-3">Looks good!</div>
+                            </div>
+
+                            <label class="font-weight-bold mb-0">R value:</label>
+                            <div class="d-flex">
+                                <small class="form-text text-muted mr-1 mb-2">Selected:</small>
+                                <small class="form-text text-muted" id="r-selected">(select value)</small>
+                            </div>
+                            <div class="form-group" id="r-input">
+                                <h:commandButton value="1" styleClass="btn btn-light r-button" type="button"
+                                                 onclick="#{submitView.setRValue('1')}"/>
+
+                                <h:commandButton value="1.5" styleClass="btn btn-light r-button" type="button"
+                                                 onclick="#{submitView.setRValue('1.5')}"/>
+
+                                <h:commandButton value="2" styleClass="btn btn-light r-button" type="button"
+                                                 onclick="#{submitView.setRValue('2')}"/>
+
+                                <h:commandButton value="2.5" styleClass="btn btn-light r-button" type="button"
+                                                 onclick="#{submitView.setRValue('2.5')}"/>
+
+                                <h:commandButton value="3" styleClass="btn btn-light r-button" type="button"
+                                                 onclick="#{submitView.setRValue('3')}"/>
+                                <div class="invalid-feedback">Please select r value using the buttons.</div>
+                                <div class="valid-feedback mb-3">Selected!</div>
+                            </div>
+
+                            <div class="form-group text-center mt-4">
+                                <h:commandButton value="Submit" styleClass="btn btn-primary submit-button"
+                                                 type="submit" action="#{submitView.submitHitResult}">
+                                    <f:ajax execute="@form" render="results-table"/>
+                                </h:commandButton>
+                                <h:commandButton value="Clear form"
+                                                 styleClass="btn btn-secondary m-1 clear-from-button"
+                                                 type="button"/>
+                                <h:commandButton value="Clear table"
+                                                 styleClass="btn btn-secondary clear-table-button"
+                                                 type="button" action="#{tableView.clearTable}">
+                                    <f:ajax execute="@form" render="results-table"/>
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="mt-5">
+                    <div>
+                        <h4 class="mb-4 text-center">Results table</h4>
+                        <h:dataTable var="hitResult" value="#{tableView.hitResultList}"
+                                     styleClass="table table-hover text-center" id="results-table">
+                            <h:column>
+                                <f:facet name="header">X value</f:facet>
+                                #{hitResult.XValue}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Y value</f:facet>
+                                #{hitResult.YValue}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">R value</f:facet>
+                                #{hitResult.RValue}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Area hit</f:facet>
+                                #{hitResult.result}
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h:outputScript library="js" name="script.main.min.js"/>
+</h:body>
+</html>

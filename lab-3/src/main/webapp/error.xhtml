@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:include src="templates/head.xhtml">
+    <ui:param name="page" value="Error"/>
+</ui:include>
+<h:outputStylesheet library="css" name="style.index.min.css"/>
+
+<h:body>
+    <div>
+        <div class="d-flex align-items-center p-3 px-4 mb-3 border-bottom shadow-sm position-relative">
+            <svg fill="#0d6efd" height="2em" viewBox="0 0 16 16" width="2em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"
+                      fill-rule="evenodd"/>
+            </svg>
+            <h5 class="my-0 mr-auto ml-4">Lab 3 - Error page</h5>
+            <div class="font-weight-light d-none d-lg-block text-center absolute-center">
+                <span>Kholoshnia Vadim Dmitrievich</span>
+                <span class="ml-2">Petrenko Nikita Alexeevich</span>
+                <span class="ml-2">P3213</span>
+            </div>
+            <div class="ml-3">
+                <h:link styleClass="mr-2" value="Start" outcome="index"/>
+                <h:link value="Main" outcome="main"/>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center mt-5">Oops! Something went wrong.</h2>
+    <div class="m-5 d-flex justify-content-center">
+        <div class="card p-3 text-center">
+            <h:outputText value="#{errorView.message}"/>
+        </div>
+    </div>
+    <div class="text-center">
+        <h:link value="back to the start page" outcome="index"/>
+    </div>
+</h:body>
+</html>
