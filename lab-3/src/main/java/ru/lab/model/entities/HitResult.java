@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public final class HitResult implements Serializable {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @NonNull

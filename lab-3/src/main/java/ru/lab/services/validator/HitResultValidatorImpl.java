@@ -58,7 +58,7 @@ public class HitResultValidatorImpl implements HitResultValidator {
       throw new ValidationException(MISSING_Y_VALUE_EXCEPTION);
     }
 
-    if (yValue < -5 || yValue > 3) {
+    if (yValue <= -5 || yValue >= 3) {
       log.info(() -> "Got wrong y value.");
       throw new ValidationException(WRONG_Y_VALUE_EXCEPTION);
     }

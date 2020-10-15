@@ -90,12 +90,6 @@ $(() => {
     graph.resetValues();
   });
 
-  $resultsTable.change(() => {
-    if ($resultsTable.find('tbody td:last').html() === 'Yes') {
-      graph.setGreenCrossing();
-    }
-  });
-
   loadSession({$xCheckboxes, $yText, $rSelected});
   $(window).on('beforeunload', () => storeSession({
     xValues: values.getXValues(),

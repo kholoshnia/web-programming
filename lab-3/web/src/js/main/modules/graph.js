@@ -215,8 +215,4 @@ export default class Graph {
 
     $yText.keyup();
   };
-
-  /** Sets crossing green color. */
-  setGreenCrossing = () => this.#$graphSvg.children('.crossing').
-      css('fill', '#2AD024');
 }

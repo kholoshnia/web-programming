@@ -11,10 +11,10 @@
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="current_session_context_class" value="thread"/>
-      <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/web_lab_3"/>
+      <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/"/>
       <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-      <property name="hibernate.connection.username" value="vadim"/>
-      <property name="hibernate.connection.password" value="123465"/>
+      <property name="hibernate.connection.username" value=""/>
+      <property name="hibernate.connection.password" value=""/>
     </properties>
   </persistence-unit>
 </persistence>

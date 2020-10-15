@@ -200,7 +200,7 @@
 
                             <h:column>
                                 <f:facet name="header">Area hit</f:facet>
-                                #{hitResult.result}
+                                #{hitResult.result ? "Yes" : "No"}
                             </h:column>
                         </h:dataTable>
                     </div>

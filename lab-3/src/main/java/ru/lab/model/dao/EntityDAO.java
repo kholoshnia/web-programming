@@ -22,8 +22,9 @@ public interface EntityDAO<Key, Entity> {
   List<Entity> getAll() throws InterruptedTransactionException;
 
   /**
-   * Return entity from the storage by key. * * @param id entity key
+   * Return entity from the storage by key.
    *
+   * @param id entity key
    * @return entity
    * @throws NoSuchElementInDatabaseException - if element not found
    * @throws InterruptedTransactionException - in case of any transaction exceptions
