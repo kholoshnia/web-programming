@@ -33,6 +33,7 @@ Technologies used:
 - jQuery
 - npm
 - Webpack
+- Java EE
 - JavaServer Pages
 
 ## Lab 3
@@ -50,4 +51,6 @@ Technologies used:
 - SuperAgent
 - npm
 - Webpack
+- Java EE
 - JavaServer Pages
+- Hibernate
